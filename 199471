@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Mada - Services Numériques Professionnels</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1.4s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102,126,234,0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .order-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .order-btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .cv-showcase {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .cv-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cv-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .cv-preview {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-form h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .contact-info-box {
+            color: white;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .payment-section {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .payment-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 250px;
+        }
+
+        .payment-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .mvola-number {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            animation: slideDown 0.3s;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🌟 Digital Mada</div>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#paiement">Paiement</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <h1>Bienvenue chez Digital Mada</h1>
+        <p>Votre partenaire digital pour tous vos besoins professionnels</p>
+        <a href="#services" class="cta-button">Découvrez nos services</a>
+    </section>
+
+    <section id="services" class="container">
+        <h2 class="section-title">Nos Services & Tarifs</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📄</div>
+                <h3>Création de CV</h3>
+                <p>CV professionnels et personnalisés créés avec Canva pour valoriser votre profil.</p>
+                <div class="price">5 000 Ar</div>
+                <button class="order-btn" onclick="openOrderModal('CV Professionnel', '5000')">Commander</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>Traduction de Texte</h3>
+                <p>Services de traduction professionnelle dans plusieurs langues.</p>
+                <div class="price">À partir de 3 000 Ar</div>
+                <button class="order-btn" onclick="openOrderModal('Traduction', '3000')">Commander</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">✍️</div>
+                <h3>Rédaction</h3>
+                <p>Rédaction de contenu professionnel : articles, documents, descriptions.</p>
+                <div class="price">À partir de 4 000 Ar</div>
+                <button class="order-btn" onclick="openOrderModal('Rédaction', '4000')">Commander</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Design Graphique</h3>
+                <p>Création de visuels attractifs, logos, bannières et designs.</p>
+                <div class="price">À partir de 10 000 Ar</div>
+                <button class="order-btn" onclick="openOrderModal('Design Graphique', '10000')">Commander</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎙️</div>
+                <h3>Transcription</h3>
+                <p>Transcription audio et vidéo en texte avec précision.</p>
+                <div class="price">2 000 Ar / 10 min</div>
+                <button class="order-btn" onclick="openOrderModal('Transcription', '2000')">Commander</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Micro-tâches</h3>
+                <p>Saisie de données, recherche web et assistance virtuelle.</p>
+                <div class="price">À partir de 1 500 Ar</div>
+                <button class="order-btn" onclick="openOrderModal('Micro-tâches', '1500')">Commander</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="cv" class="cv-showcase">
+        <div class="container">
+            <h2 class="section-title">Exemples de CV Créés avec Canva</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">
+                Nous créons des CV professionnels et modernes qui mettent en valeur vos compétences
+            </p>
+            <div class="cv-examples">
+                <div class="cv-card">
+                    <div class="cv-preview">📋</div>
+                    <h3>CV Classique</h3>
+                    <p>Design élégant et professionnel pour tous secteurs</p>
+                    <div class="price">5 000 Ar</div>
+                </div>
+                <div class="cv-card">
+                    <div class="cv-preview">💼</div>
+                    <h3>CV Moderne</h3>
+                    <p>Style contemporain avec mise en page dynamique</p>
+                    <div class="price">5 000 Ar</div>
+                </div>
+                <div class="cv-card">
+                    <div class="cv-preview">🎯</div>
+                    <h3>CV Créatif</h3>
+                    <p>Design unique pour les profils créatifs</p>
+                    <div class="price">7 000 Ar</div>
+                </div>
+                <div class="cv-card">
+                    <div class="cv-preview">🌟</div>
+                    <h3>CV Premium</h3>
+                    <p>Excellence visuelle pour se démarquer</p>
+                    <div class="price">10 000 Ar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="paiement" class="payment-section">
+        <div class="container">
+            <h2 class="section-title">Modes de Paiement</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
+                Payez facilement et en toute sécurité avec MVola
+            </p>
+            <div class="payment-methods">
+                <div class="payment-card">
+                    <div class="payment-icon">📱</div>
+                    <h3>MVola</h3>
+                    <p>Envoyez votre paiement au numéro :</p>
+                    <div class="mvola-number">034 XX XXX XX</div>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                        ⚠️ Après paiement, envoyez-nous la capture d'écran par WhatsApp ou Email
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-form">
+                <h3>📝 Demandez un Devis</h3>
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    <input type="hidden" name="bot-field">
+                    
+                    <div class="form-group">
+                        <label>Nom complet *</label>
+                        <input type="text" name="nom" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Téléphone / MVola *</label>
+                        <input type="tel" name="telephone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Service désiré *</label>
+                        <select name="service" required>
+                            <option value="">Choisissez un service</option>
+                            <option value="CV">Création de CV</option>
+                            <option value="Traduction">Traduction</option>
+                            <option value="Rédaction">Rédaction</option>
+                            <option value="Design">Design Graphique</option>
+                            <option value="Transcription">Transcription</option>
+                            <option value="Micro-tâches">Micro-tâches</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Détails du projet</label>
+                        <textarea name="message" placeholder="Décrivez votre besoin..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Envoyer la demande</button>
+                </form>
+            </div>
+
+            <div class="contact-info-box">
+                <h3 style="font-size: 2rem; margin-bottom: 2rem;">📞 Contactez-nous</h3>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h4>Email</h4>
+                    <p>contact@digitalmada.com</p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h4>Téléphone / MVola</h4>
+                    <p>034 XX XXX XX</p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>Localisation</h4>
+                    <p>Antananarivo, Madagascar</p>
+                </div>
+
+                <a href="https://wa.me/261XXXXXXXXX?text=Bonjour%20Digital%20Mada" class="whatsapp-btn" target="_blank">
+                    💬 Contactez-nous sur WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2 style="color: #667eea; margin-bottom: 1.5rem;">Commander un Service</h2>
+            <form name="commande" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="commande">
+                <input type="hidden" name="bot-field">
+                <input type="hidden" name="service" id="modalService">
+                <input type="hidden" name="prix" id="modalPrix">
+                
+                <div class="form-group">
+                    <label>Service sélectionné</label>
+                    <input type="text" id="displayService" disabled style="background: #f0f0f0;">
+                </div>
+
+                <div class="form-group">
+                    <label>Prix</label>
+                    <input type="text" id="displayPrix" disabled style="background: #f0f0f0;">
+                </div>
+                
+                <div class="form-group">
+                    <label>Votre nom *</label>
+                    <input type="text" name="nom" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Téléphone / Numéro MVola *</label>
+                    <input type="tel" name="telephone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Détails de votre commande</label>
+                    <textarea name="details" placeholder="Décrivez votre besoin..." required></textarea>
+                </div>
+
+                <div style="background: #fff3cd; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="color: #856404; font-size: 0.9rem;">
+                        ℹ️ Après avoir soumis cette commande, envoyez votre paiement MVola au <strong>034 XX XXX XX</strong> puis envoyez-nous la capture d'écran.
+                    </p>
+                </div>
+                
+                <button type="submit" class="submit-btn">Confirmer la commande</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Digital Mada. Tous droits réservés.</p>
+        <p>Votre partenaire digital à Madagascar 🇲🇬</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Paiement sécurisé avec MVola</p>
+    </footer>
+
+    <script>
+        function openOrderModal(service, prix) {
+            document.getElementById('orderModal').style.display = 'block';
+            document.getElementById('modalService').value = service;
+            document.getElementById('modalPrix').value = prix + ' Ar';
+            document.getElementById('displayService').value = service;
+            document.getElementById('displayPrix').value = prix + ' Ar';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    const btn = this.querySelector('button[type="submit"]');
+                    btn.textContent = 'Envoi en cours...';
+                    btn.disabled = true;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
